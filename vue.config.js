@@ -6,5 +6,6 @@ module.exports = {
     host: '0.0.0.0',
     https: false,
     open: true,
-  }
+  },
+  lintOnSave: false,
 }
