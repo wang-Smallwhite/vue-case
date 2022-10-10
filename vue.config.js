@@ -12,6 +12,15 @@ module.exports = {
     host: '0.0.0.0', // 开发运行时域名， 设置成 ‘0.0.0.0’，在同一个局域网下，如果你的项目运行，同时可以通过你的http://ip:port/... 访问你的项目
     https: false, // 是否启用 https
     open: true,   // 运行时 是否直接打开浏览器
-    
+    proxy: {
+      '/api': {
+        target: '', // 允许跨域的地址
+        ws: true,
+        changeOrigin: true,  // 允许跨域
+        pathRewrite: {
+          '^/api': '',  // 请求的时候使用这个 api 就可以了
+        }
+      }
+    }
   },
 }
