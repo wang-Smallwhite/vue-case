@@ -3,26 +3,33 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const routes = [
+const constantRoutes = [
   {
-    path: "/",
-    name: "Home",
-    component:()=> import("../views/Home.vue")
+    path: '/login',
+    component: ()=> import('../views/login/login')
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: '/404',
+    component: ()=> import('../views/404.vue')
   },
+  {
+    path: '/',
+    component: ()=> import('../views/index')
+  }
 ];
 
-const router = new VueRouter({
-  base: process.env.BASE_URL,
-  routes,
-});
+
+const createRouter = () => new VueRouter({
+  // mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
+})
+const router = createRouter()
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
 
 export default router;
