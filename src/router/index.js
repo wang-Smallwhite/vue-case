@@ -3,13 +3,13 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const constantRoutes = [
+export const constantRoutes = [
   {
     path: '/login',
     component: ()=> import('../views/login/login')
   },
   {
-    path: '/404',
+    path: '*',
     component: ()=> import('../views/404.vue')
   },
   {
@@ -17,6 +17,13 @@ const constantRoutes = [
     component: ()=> import('../views/index')
   }
 ];
+
+export const asyncRoutes = [
+  {
+    path: '/about',
+    component: ()=> import('../views/about/index')
+  }
+]
 
 
 const createRouter = () => new VueRouter({

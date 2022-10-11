@@ -1,6 +1,8 @@
 <template>
   <div>
     首页
+
+    <router-link to="/about">进入需要权限页面</router-link>
   </div>
 </template>
 

@@ -1,14 +1,12 @@
 <template>
   <div>
-    <router-link :to="{path: '/'}">跳转</router-link>
+    需要登录且有权限才能进入的页面
   </div>
 </template>
 
 <script>
   export default {
-    mounted() {
-
-    }
+    
   }
 </script>
 
