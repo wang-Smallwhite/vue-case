@@ -9,15 +9,14 @@ import {loadBMap, BMPGL} from '../../utils/Bmap.js'
 export default {
   data() {
     return {
-      longitude:120.343373,
-      latitude: 31.540212
+
     };
   },
   mounted() {
     const p = BMPGL("avLRraGNrFqaHA7j71ekPL2KYw9F6VG8")
     p.then(()=>{
       this.initMap()
-    })
+    }) 
   },
   methods: {
     // 初始化地图
