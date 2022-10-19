@@ -1,17 +1,40 @@
 <template>
   <div>
-    首页
-
-    <router-link to="/about">进入需要权限页面</router-link>
+    <div id="map-container" class="map_container"></div>
   </div>
 </template>
 
 <script>
-  export default {
-    
-  }
+import {loadBMap, BMPGL} from '../../utils/Bmap.js'
+export default {
+  data() {
+    return {
+      longitude:120.343373,
+      latitude: 31.540212
+    };
+  },
+  mounted() {
+    const p = BMPGL("avLRraGNrFqaHA7j71ekPL2KYw9F6VG8")
+    p.then(()=>{
+      this.initMap()
+    })
+  },
+  methods: {
+    // 初始化地图
+    initMap() {
+      console.log('地图初始化')
+      const that = this;
+      console.log(window.BMapGL)
+      this.map = new window.BMapGL.Map("map-container")
+      this.map.centerAndZoom(new BMapGL.Point(116.404, 39.915), 11);
+    }
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="less" scoped>
+.map_container {
+  width: 100%;
+  height: 400px;
+}
 </style>
