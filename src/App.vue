@@ -5,5 +5,4 @@
 </template>
 
 <style lang="less">
-
 </style>

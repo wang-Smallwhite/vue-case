@@ -1,7 +1,7 @@
 import router, { constantRoutes, resetRouter, asyncRoutes } from '@/router'
 const whiteList = ['/login'] // no redirect whitelist  白名单
 
-let hasToken = true, hasRoles = false, oneRun= true
+let hasToken = false, hasRoles = false, oneRun= true
 router.beforeEach((to, from, next)=>{
   if(hasToken) {
     console.log(to.path)
