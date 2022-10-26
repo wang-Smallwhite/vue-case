@@ -138,7 +138,7 @@ export default {
     .el-input {
       width: 85%;
       
-    }
+    } 
     /deep/ .el-input__inner {
       font-weight: 500;
       font-size: 14px;
