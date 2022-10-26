@@ -98,6 +98,7 @@ export default {
       this.$refs.form.validate(valid =>{
         if(valid) {
           console.log(this.loginFrom)
+          console.log(process.env)
         }else {
           return false
         }
