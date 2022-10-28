@@ -1,10 +1,11 @@
 import router, { constantRoutes, resetRouter, asyncRoutes } from '@/router'
+import {getToken} from '@/utils/auth'
 const whiteList = ['/login'] // no redirect whitelist  白名单
 
-let hasToken = false, hasRoles = false, oneRun= true
+let hasRoles = false, oneRun= true
 router.beforeEach((to, from, next)=>{
+  const hasToken = getToken()
   if(hasToken) {
-    console.log(to.path)
     if(to.path == '/login') {  // 已登录， 自动跳转到 / 页面
       next({path: '/'});
     }else {
@@ -37,6 +38,7 @@ router.beforeEach((to, from, next)=>{
       // in the free login whitelist, go directly
       next()
     } else {
+      console.log('?????')
       // other pages that do not have permission to access are redirected to the login page.
       next(`/login?redirect=${to.path}`)
     }

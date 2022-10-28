@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { removeToken, getToken } from '@/utils/auth'
 export default {
   data() {
     const validateUsername = (rule, value, callback) => {
@@ -76,7 +77,8 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     showPas() {
       if(this.passwordType == 'password') {
@@ -97,8 +99,10 @@ export default {
     onSubmit() {
       this.$refs.form.validate(valid =>{
         if(valid) {
-          console.log(this.loginFrom)
-          console.log(process.env)
+          this.$store.dispatch('user/login', this.loginFrom).then(()=>{
+            console.log('登录成功')
+            this.$router.push('/')
+          })
         }else {
           return false
         }
