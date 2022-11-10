@@ -100,8 +100,8 @@ export default {
       this.$refs.form.validate(valid =>{
         if(valid) {
           this.$store.dispatch('user/login', this.loginFrom).then(()=>{
-            console.log('登录成功')
             this.$router.push('/')
+            console.log(this.$router)
           })
         }else {
           return false
@@ -139,6 +139,8 @@ export default {
       margin-bottom: 30px;
       font-size: 30px;
       text-align: center;
+      font-weight: 800;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
     .el-input {
       width: 85%;

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import Layout from '@/layout';
 Vue.use(VueRouter);
 
 export const constantRoutes = [
@@ -12,17 +12,29 @@ export const constantRoutes = [
     path: '*',
     component: ()=> import('../views/404.vue')
   },
-  {
-    path: '/',
-    component: ()=> import('../views/index')
-  }
+  
 ];
 
 export const asyncRoutes = [
   {
-    path: '/about',
-    component: ()=> import('../views/about/index')
-  }
+    path: '/',
+    component: Layout,
+    redirect: '/index',
+    name: '首页',
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        component: ()=> import('../views/index')
+      },{
+        path: 'about',
+        name: 'about',
+        component: ()=> import('../views/about/index')
+      }
+    ]
+  },
+  
+  
 ]
 
 
