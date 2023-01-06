@@ -100,7 +100,7 @@ export default {
       this.$refs.form.validate(valid =>{
         if(valid) {
           this.$store.dispatch('user/login', this.loginFrom).then(()=>{
-            this.$router.push('/')
+            this.$router.push('/').catch(()=>{})
             console.log(this.$router)
           })
         }else {

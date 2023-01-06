@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {MessageBox, Message} from 'element-ui';
+// import {MessageBox, Message} from 'element-ui';
 import { getToken } from '@/utils/auth'
 
 /*
@@ -24,11 +24,11 @@ service.interceptors.response.use(response=>{
   // console.log('______响应拦截器')
   const res = response.data;
   if(res.code !== 200) {
-    Message({
-      message:res.message || 'Error',
-      type: 'error',
-      duration: 5 * 1000
-    })
+    // Message({
+    //   message:res.message || 'Error',
+    //   type: 'error',
+    //   duration: 5 * 1000
+    // })
   }
   if(res.code == 508 || res.code == 512 || res.code == 514) {
     // 登录过期
