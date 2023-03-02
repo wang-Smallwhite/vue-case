@@ -19,13 +19,13 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/index',
+    redirect: 'index',
     name: '首页',
     children: [
       {
-        path: 'index',
-        name: 'index',
-        component: ()=> import('../views/index')
+        path: '/index',
+        name: 'home',
+        component: ()=> import('../views/index/index')
       },{
         path: 'about',
         name: 'about',

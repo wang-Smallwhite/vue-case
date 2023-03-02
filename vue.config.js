@@ -1,6 +1,6 @@
 module.exports = {
   // 部署应用包的基本 URL，NODE_ENV：Node.js 暴露给执行脚本的系统环境变量。通常用于确定在开发环境还是生产环境
-  publicPath: process.env.NODE_ENV == 'production' ? './' : '/',
+  publicPath: process.env.NODE_ENV == 'production' ? '/' : '/',
   outputDir: 'dist',  // 输出文件目录，当运行 vue-cli-service build(npm run build) 时生成的生产环境构建文件的目录。注意目标目录在构建之前会被清除 (构建时传入 --no-clean 可关闭该行为)。
   assetsDir: 'static', // 放置静态文件资源        注：从生成的资源覆写 filename 或 chunkFilename 时，assetsDir 会被忽略。
   // indexPath: 'index.html', // 可以不设置，一般默认
