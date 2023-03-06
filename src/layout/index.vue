@@ -4,14 +4,20 @@
     <el-container>
       <el-aside width="200px">Aside</el-aside>
       <el-main>
-        <router-view></router-view>
+        <router-view :key="key"></router-view>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      key:  $router.path
+    }
+  },
+};
 </script>
 
 <style lang="less" scoped>
