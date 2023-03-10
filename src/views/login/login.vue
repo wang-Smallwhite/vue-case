@@ -121,7 +121,7 @@ export default {
         if(valid) {
           this.$store.dispatch('user/login', this.loginFrom).then(()=>{
             this.$router.push('/').catch(()=>{})
-            console.log(this.$router)
+            // console.log(this.$router)
           })
         }else {
           return false
