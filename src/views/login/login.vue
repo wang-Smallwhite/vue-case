@@ -40,6 +40,15 @@
             <i slot="prefix" class="el-input__icon el-icon-lock"></i>
           </el-input>
         </el-form-item>
+        <el-form-item label="验证码：">
+          <template>
+            <div >
+              <el-input v-model="loginFrom.code" class="code_input" size="normal" clearable></el-input>
+              <div v-html="imgCode" class="code_box" ></div>
+            </div>
+          </template>
+        </el-form-item>
+        
         <el-form-item>
           <el-button type="primary" @click="onSubmit">登录</el-button>
         </el-form-item>
@@ -50,6 +59,7 @@
 
 <script>
 import { removeToken, getToken } from '@/utils/auth'
+import api from '@/api/index'
 export default {
   data() {
     const validateUsername = (rule, value, callback) => {
@@ -70,16 +80,26 @@ export default {
       loginFrom: {
         username: "",
         password: "",
+        code: ''
       },
+      imgCode: '',
+      codevalue: '',
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }]
       },
     };
   },
-  mounted() {
+  created() {
+    this.getCap()
   },
   methods: {
+    getCap() {
+      api.getCaptcha().then(res=>{
+        this.imgCode = res.data;
+        this.codevalue = res.text;
+      })
+    },
     showPas() {
       if(this.passwordType == 'password') {
         this.passwordType = '';
@@ -146,6 +166,14 @@ export default {
       width: 85%;
       
     } 
+    .code_input {
+      width: 120px;
+    }
+    .code_box {
+      display: inline-block;
+      vertical-align: top;
+      height: 45px;
+    }
     /deep/ .el-input__inner {
       font-weight: 500;
       font-size: 14px;

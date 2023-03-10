@@ -8,4 +8,12 @@ export default {
       data
     })
   },
+
+  getCaptcha: (data) => {
+    return request({
+      url: '/public/getCaptcha',
+      method: 'get',
+      data
+    })
+  }
 }

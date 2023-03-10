@@ -12,11 +12,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      key:  $router.path
-    }
+  computed: {
+    key() {
+    return  this.$route.path
   },
+  },
+  
 };
 </script>
 
