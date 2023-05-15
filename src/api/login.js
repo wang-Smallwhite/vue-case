@@ -3,7 +3,7 @@ export default {
   login: (data) => {
     return request({
       // url: '/ghretail/pos/admin/branchLogin',
-      url: '/login',
+      url: '/login/login',
       method: 'post',
       data
     })

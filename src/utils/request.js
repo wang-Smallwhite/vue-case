@@ -33,7 +33,6 @@ service.interceptors.response.use(response=>{
   if(res.code == 508 || res.code == 512 || res.code == 514) {
     // 登录过期
   }else {
-    console.log('进来')
     return res
   }
 })

@@ -37,9 +37,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.login({ username: username.trim(), password: password }).then(response => {
         console.log(response)
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+        commit('SET_TOKEN', response.token)
+        setToken(response.token)
         console.log(getToken())
         resolve()
       }).catch(error => {

@@ -26,10 +26,6 @@ export const asyncRoutes = [
         path: '/index',
         name: 'home',
         component: ()=> import('../views/index/index')
-      },{
-        path: 'about',
-        name: 'about',
-        component: ()=> import('../views/about/index')
       }
     ]
   },

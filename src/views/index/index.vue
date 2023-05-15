@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div @click="loginOut">退出</div>
+    11213
+
+
+
+    <!-- <div @click="loginOut">退出</div> -->
   </div>
 </template>
 
@@ -9,8 +13,13 @@
   import router, { resetRouter } from '@/router'
   export default {
     
-
+    mounted() {
+      console.log(this.$router);
+    },
     methods: {
+
+
+
       loginOut() {
         removeToken()
         resetRouter()

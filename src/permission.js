@@ -1,5 +1,6 @@
 import router, { constantRoutes, resetRouter, asyncRoutes } from '@/router'
 import {getToken} from '@/utils/auth'
+import RouterList from './router/routerList'
 const whiteList = ['/login'] // no redirect whitelist  白名单
 
 let hasRoles = false, oneRun= true
@@ -15,8 +16,8 @@ router.beforeEach((to, from, next)=>{
       }else {
         if(oneRun) {
           oneRun = false
-          console.log('没有权限, 动态添加')
-          const totalRoutes = [...asyncRoutes]
+          // console.log('没有权限, 动态添加')
+          const totalRoutes = [...asyncRoutes, ...RouterList.routerList]
           resetRouter()
           router.options.routes = totalRoutes;
           router.addRoutes(totalRoutes)

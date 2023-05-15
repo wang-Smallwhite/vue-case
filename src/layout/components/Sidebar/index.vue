@@ -1,14 +1,10 @@
 <template>
-  <div :class="{'has-logo':showLogo}">
-    <logo v-if="showLogo" :collapse="isCollapse" />
+  <div >
+    <!-- <logo v-if="showLogo" :collapse="isCollapse" /> -->
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
-        :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
       >
@@ -20,17 +16,24 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Logo from './Logo'
+// import Logo from './Logo'
 import SidebarItem from './SidebarItem'
-import variables from '@/styles/variables.scss'
+// import variables from '@/styles/variables.scss'
 
 export default {
-  components: { SidebarItem, Logo },
+  components: { SidebarItem,
+    //  Logo 
+    },
+  data() {
+    return {
+      permission_routes: []
+    }
+  },
+  mounted() {
+
+    this.permission_routes = this.$router.options.routes
+  },
   computed: {
-    ...mapGetters([
-      'permission_routes',
-      'sidebar'
-    ]),
     activeMenu() {
       const route = this.$route
       const { meta, path } = route
@@ -40,15 +43,15 @@ export default {
       }
       return path
     },
-    showLogo() {
-      return this.$store.state.settings.sidebarLogo
-    },
+    // showLogo() {
+    //   return this.$store.state.settings.sidebarLogo
+    // },
     variables() {
       return variables
     },
-    isCollapse() {
-      return !this.sidebar.opened
-    }
+    // isCollapse() {
+    //   return !this.sidebar.opened
+    // }
   }
 }
 </script>

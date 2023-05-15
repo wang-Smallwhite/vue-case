@@ -40,11 +40,11 @@
             <i slot="prefix" class="el-input__icon el-icon-lock"></i>
           </el-input>
         </el-form-item>
-        <el-form-item label="验证码：">
+        <el-form-item label="验证码：" prop="code">
           <template>
             <div >
               <el-input v-model="loginFrom.code" class="code_input" size="normal" clearable></el-input>
-              <div v-html="imgCode" class="code_box" ></div>
+              <div v-html="imgCode" class="code_box" @click="getCap()"></div>
             </div>
           </template>
         </el-form-item>
@@ -76,6 +76,13 @@ export default {
         callback()
       }
     }
+    const validateCode = (rule, value, callback)=>{
+      if(value.toLowerCase() == this.codeValue.toLowerCase()) {
+          callback()
+      }else {
+        callback(new Error('请确认验证码'))
+      }
+    }
     return {
       loginFrom: {
         username: "",
@@ -86,7 +93,8 @@ export default {
       codevalue: '',
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }],
+        code: [{required: true, trigger: 'blur', validator: validateCode}]
       },
     };
   },
@@ -97,7 +105,7 @@ export default {
     getCap() {
       api.getCaptcha().then(res=>{
         this.imgCode = res.data;
-        this.codevalue = res.text;
+        this.codeValue = res.text;
       })
     },
     showPas() {
@@ -133,7 +141,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../../styles/variables.less';
 .login_contain {
   width: 100vw;
   height: 100vh;
@@ -173,6 +180,7 @@ export default {
       display: inline-block;
       vertical-align: top;
       height: 45px;
+      cursor: pointer;
     }
     /deep/ .el-input__inner {
       font-weight: 500;
