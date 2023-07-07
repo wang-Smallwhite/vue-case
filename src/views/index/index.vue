@@ -4,7 +4,7 @@
 
 
 
-    <!-- <div @click="loginOut">退出</div> -->
+    <div @click="loginOut">退出</div>
   </div>
 </template>
 

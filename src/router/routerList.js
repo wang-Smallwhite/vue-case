@@ -17,10 +17,18 @@ export default {
         id: '1-1',
         pid: 1,
         path: 'case',
-        name: '数据中心',
-        label: '数据中心',
+        name: '测试页面',
+        label: '测试页面',
         component: () => import('@/views/case/index'),
-        meta: { title: '数据中心', icon: '' }
+        meta: { title: '测试页面', icon: '' }
+      },{
+        id: '1-2',
+        pid:1,
+        path: 'vModel',
+        name: 'v-model放在自定义组件中',
+        label: 'v-model放在自定义组件中',
+        component: ()=> import('@/views/case/vModel'),
+        meta: { title: 'v-model放在自定义组件中', icon: '' }
       }]
     },
     {
