@@ -25,33 +25,42 @@ export default {
         id: '1-2',
         pid:1,
         path: 'vModel',
-        name: 'v-model放在自定义组件中',
-        label: 'v-model放在自定义组件中',
+        name: '自定义组件实现 v-model',
+        label: '自定义组件实现 v-model',
         component: ()=> import('@/views/case/vModel'),
-        meta: { title: 'v-model放在自定义组件中', icon: '' }
-      }]
+        meta: { title: '自定义组件实现 v-model', icon: '' }
+      },{
+        id: '1-3',
+        pid:1,
+        path: 'autoText',
+        name: '自动文本效果',
+        label: '自动文本效果',
+        component: ()=> import('@/views/case/auto-text-effect'),
+        meta: { title: '自动文本效果', icon: '' }
+      }
+    ]
     },
     {
       id: '2',
       pid: ' ',
-      path: '/index',
-      redirect: 'index',
-      name: '首页',
+      path: '/richtext',
+      name: '富文本',
       component: Layout,
-      label: '首页',
-      alwaysShow: true,
+      label: '富文本',
       meta: {
-        title: '首页'
+        title: '富文本'
       },
-      children: [{
-        id: '2-1',
-        pid: 2,
-        path: 'index',
-        name: '测试',
-        label: '测试',
-        component: () => import('@/views/index/index'),
-        meta: { title: '测试', icon: '' }
-      }]
+      children: [
+        {
+          id: '2-1',
+          path: 'richtext',
+          name: '富文本编辑器',
+          label: '富文本编辑器',
+          pid: '1',
+          component: ()=> import('@/views/Richtext/index.vue'),
+          meta: { title: '富文本编辑器', icon: '' }
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header><Navbar /></el-header>
     <el-container>
       <Sidebar class="sidebar-container" />
       <el-main class="main-container">
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import { Sidebar } from './components'
+import { Sidebar, Navbar } from './components'
 
 export default {
   components: {
-    // Navbar,
+    Navbar,
     Sidebar,
     // AppMain
   },
@@ -37,7 +37,6 @@ export default {
 .sidebar-container {
   transition: width 0.28s;
     width: 210px !important;
-    background-color: #304156;
     z-index: 1001;
     overflow: hidden;
     .horizontal-collapse-transition {
@@ -48,13 +47,13 @@ export default {
       overflow-x: hidden !important;
     }
 
-    .el-scrollbar__bar.is-vertical {
-      right: 0px;
-    }
+    // .el-scrollbar__bar.is-vertical {
+    //   right: 0px;
+    // }
 
-    .el-scrollbar {
-      height: 100%;
-    }
+    // .el-scrollbar {
+    //   height: 100%;
+    // }
 
     &.has-logo {
       .el-scrollbar {
